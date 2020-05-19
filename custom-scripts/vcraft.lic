@@ -1,0 +1,107 @@
+=begin
+Go to your preferred vault location and stuff your crafting gear away. It will also do the reverse
+
+    author: Arlov
+    game:   DR
+    tags:   vault, storage, search, vault book
+    Version: 1.0
+
+    Usage:  ;vcraft <search>
+            ;vault knife
+            ;vault wrist knife
+
+    Changelog:
+
+          Version 1.0 - released 9 Sep 2019
+=end
+
+custom_require.call(%w[common common-arcana common-crafting common-items common-travel common-money events])
+
+class VCraft
+  include DRC
+  include DRCC
+  include DRCI
+  include DRCA
+  include DRCT
+  include DRCM
+
+  def initialize
+    arg_definitions = [
+      [
+        { name: 'mode', options: %w[deposit withdraw goto exit], optional: true, description: 'What mode to use' },
+      ]
+    ]
+
+    vault_entrances = {
+        13507 => ["basalt", "granite", "limestone"],
+        8285  => ["blackwood", "ironwood", "rosewood"] 
+      }
+    # Flags.add('room-full', 'You need another splash of water')
+
+    args = parse_args(arg_definitions)
+    mode = args.mode
+
+    @settings = get_settings
+    vault_location = @settings["vault_location"]
+
+    if vault_location.nil?
+      respond("You need to set vault_location: in your yaml.")
+      exit
+    end
+
+
+    DRC.wait_for_script_to_complete('go2', [vault_location], force: true)
+
+    switch mode
+    when "enter"
+      enter_vault(vault_entrances[vault_location])
+    when "deposit"
+      enter_vault(vault_entrances[vault_location])
+      # deposit_items
+      # exit_vault
+    when "withdraw"
+      enter_vault(vault_entrances[vault_location])
+      # withdraw items
+      # exit_vault
+    end
+
+    if mode = 
+  end
+
+  def enter_vault(arches)
+    success = false
+    while success != true do
+      arches.each |adjective| do
+
+        response = bput("go #{adjective} arch", "^.+Hey bub, are you lost?.+$", "The \w+ attendant escorts you through the .+\.", 'The attendant steps in front of the ironwood arch.  "\w+ is using that booth," he says.')
+
+        case respond
+          when =~ /.+Hey bub, are you lost?.+/
+            respond("You do not have vault_location set properly.")
+            exit
+          when =~ /The \w+ attendant escorts you through the .+\./
+            success = true
+            break
+          when =~ /The attendant steps in front of the ironwood arch.  "\w+ is using that booth," he says./
+            success = false
+          else
+            respond("Record This Response")
+            exit
+        end
+      end
+
+      sleep 15
+    end
+  end
+  def remove_item
+  end
+
+end
+
+before_dying do
+#  Flags.delete('room-full')
+end
+
+VCraft.new
+
+

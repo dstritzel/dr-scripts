@@ -1,0 +1,49 @@
+---
+# https://elanthipedia.play.net/Thief#Circle_Requirements
+
+# 1 Magic: Augmentation
+# 4 Weapons (only 2 are needed to circle): Brawling, Small Edged, Small Blunt, Light Thrown
+# 2 Armors (only 1 is needed to circle): Light Armor, Shield Usage
+# 8 Survivals: Stealth, Thievery, Athletics, Perception, Skinning, Evasion, Locksmithing, Backstab
+# 3 Lores: Appraisal, Tactics, Scholarship
+
+# Eventually you will need to train 1 more Magic to circle (for a total of 2)
+# However, you will probably end up training them all since they each have very useful abilities
+# The other Magic skills are: Utility, Debilitation
+
+# Hunting settings
+training_manager_hunting_priority: true
+training_manager_priority_skills:
+#- Small Edged
+- Small Blunt
+- Light Thrown
+- Brawling
+- Large Edged
+#- Skinning
+#- Backstab
+#- Tactics
+hunting_info:
+- :zone: origami
+  args:
+    - back
+  stop_on:
+#  - Small Edged
+  - Small Blunt
+  - Light Thrown
+  - Brawling
+  - Large Edged
+  #- Skinning
+  #- Backstab
+  #- Tactics
+  :duration: 30
+training_abilities:
+#  Tactics: 30
+#  Stealth: 60
+backstab:
+ambush: false
+use_stealth_attacks: false
+weapon_training:
+  Brawling: ''
+  Small Blunt: throwing spike
+  Light Thrown: throwing spike
+  Large Edged: icy-blue blade

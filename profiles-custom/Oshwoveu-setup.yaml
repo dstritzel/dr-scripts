@@ -1,0 +1,839 @@
+---
+hometown: Crossing
+quit_on_status_warning: false
+status_monitor_no_window: false
+favor_god: Hodierna
+favor_goal: 30
+saferoom_health_threshold: 15
+depart_on_death: false  
+health_threshold: 65
+repair_withdrawal_amount: 30000
+repair_timer: 21600 # Repair once every 6 hours
+repair_every: .inf # Infinity
+dump_junk: true
+training_manager_hunting_priority: true
+training_manager_town_duration: 60
+training_manager_priority_skills:
+- Targeted Magic
+- Staves
+- Brawling
+
+hunting_info:
+- :zone: granite_gargoyles_monastary
+  stop_on:
+  - Staves
+  - Brawling
+#  - Targeted Magic
+  args:
+  - construct
+  - d1
+hunting_room_min_mana: 11
+hunting_room_strict_mana: false
+
+stance_override: 100 41 41
+###############
+# Safe Room
+###############
+safe_room: &safe_room 984
+braid_item: grass
+listen: true
+listen_observe: true
+
+
+crossing_training:
+- Empathy
+- Athletics
+- Appraisal
+- First Aid
+- Outdoorsmanship
+#- Outfitting
+#- Stealth
+stances:
+  Brawling:
+  - Evasion
+  - Parry Ability
+  - Shield Usage
+  Staves:
+  - Parry Ability
+  - Evasion
+  - Shield Usage
+
+# Combat settings
+
+offensive_spells:
+#- skill: Targeted Magic
+#  name: Strange Arrow
+#  harmless: false
+#  use_auto_mana: true
+- skill: Debilitation
+  name: Lethargy
+  harmless: true
+  mana: 9
+
+
+combat_spell_training: &cst
+  # Utility:
+  #   abbrev: hw
+  #   #symbiosis: true
+  #   cast: cast chest
+  #   use_auto_mana: true
+  # Augmentation:
+  #   abbrev: refresh
+  #   #symbiosis: true
+  #   mana: 1
+  #   cambrinth:
+  #   - 18
+  #   - 10
+  #   - 10
+  #   - 10
+use_harness_when_arcana_locked: true
+dedicated_camb_use: spell
+waggle_force_cambrinth: true
+buff_spells_force_cambrinth: false
+train_with_spells: true
+use_research: false
+cambrinth: cambrinth armband
+stored_cambrinth: false
+prep_scaling_factor: 0.85
+cambrinth_cap: 32
+
+cambrinth_items:
+  - name: khor'vela staff
+    cap: 200
+    stored: false
+  - name: cambrinth viper
+    cap: 32
+    stored: false
+
+# - name: cambrinth earcuff
+#   stored: false
+
+#####
+# Burgle
+#####
+burgle_settings:
+  lockpick_container: lockpick ring
+  room: 1879
+  entry_type: lockpick                      # lockpick | rope | cycle
+  use_lockpick_ring: true
+  max_search_count: 3
+  loot: keep
+  retry: true
+  safe_mode: true
+  loot_container: carryall
+  room_blacklist:                           # array of rooms to ignore. Case sensitive.
+    - Kitchen
+#  item_whitelist:
+#    - keepsake box
+    
+###############
+# Combat Trainer
+###############
+buff_nonspells:
+  support warrior: 30 # private ct edit
+
+training_abilities:
+  App Quick: 60
+  Perc: 60
+  Hunt: 120
+  Analyze: 120
+  Perc Health: 120
+  # Collect: 120
+  # Recall: 1800
+  # Stealth: 60
+  Tactics: 30
+
+dance_actions:
+- circle
+- bob
+- weave
+- shove
+
+###############
+# Empath
+###############
+manipulate_only_to_train: true
+manipulate_threshold: 2
+heal_spell_mana_threshold: 30
+empath_healing:
+  VH:
+  - 10
+  - 10
+  - 10
+  - 10
+  FOC:
+  - 30
+  - 9
+
+# if true, will attempt to pull money from the nearest bank if you have no money for fares
+bescort_fare_handling: true
+# hide when on the ferries and suchlike
+bescort_hide: false
+
+###############
+# Weapons
+###############
+combat_trainer_target_increment: 3
+combat_trainer_action_count: 10
+priority_defense: Evasion
+use_stealth_attacks: false
+use_weak_attacks: true
+dont_stalk: false
+###############
+# Looting
+###############
+
+
+loot_subtractions:
+- arrow
+- arrows
+- rock
+- rocks
+loot_additions:
+- tooth
+skinning:
+  skin: true
+  arrange_all: true
+  arrange_count: 0
+  tie_bundle: false
+sell_loot_bundle: true
+sell_loot_pouch: false
+###############
+# Hunting Buddy
+###############
+ignored_npcs:
+- Brokk
+- warrior
+- zombie
+
+hunting_buddies:
+- Arduke
+- Oshwoveu
+- Ntari
+- Arlov
+- Inaldrio
+- Ailor
+###############
+# Script Gear
+###############
+footwear: boots
+textbook: true
+textbook_type: textbook
+
+
+###############
+# Selling
+###############
+gem_pouch_adjective: gem
+spare_gem_pouch_container: carryall
+full_pouch_container: backpack
+storage_containers:
+- multi-strapped carryall
+- dergatine backpack
+
+###############
+# Stealing
+###############
+hide_to_steal: true
+bin_stolen: false
+stealing_bag: carryall
+
+###############
+# Locksmithing
+###############
+box_loot_limit: 15
+box_hunt_minimum: 1
+lockpick_room_id: *safe_room
+use_lockpick_ring: true
+skip_lockpick_ring_refill: false
+lockpick_ignore_difficulty: true
+stop_pick_on_mindlock: false
+harvest_traps: false
+picking_pet_box_source: hip pouch
+picking_box_source: carryall
+picking_box_storage: leather bag
+lockpick_type: ordinary
+lockpick_dismantle: crush
+lockpick_buffs:
+
+###############
+# Crafting
+###############
+outfitting_room: 12225
+engineering_room: *safe_room
+workorder_diff:
+  tailoring: easy
+  weaponsmithing: easy
+  blacksmithing: easy
+  carving: easy
+  remedies: hard
+train_workorders:
+- Tailoring
+- Remedies
+#- Shaping
+#- Blacksmithing
+crafting_container: duffel bag
+crafting_items_in_container: duffel bag
+outfitting_belt:
+  name: outfitter's belt
+  items:
+    - knitting needles
+    - sewing needles
+    - straight scissors
+    - awl
+    - yardstick
+outfitting_tools:
+  - knitting needles
+  - sewing needles
+  - awl
+  - straight scissors
+  - yardstick
+
+alchemy_belt:
+  name: alchemist's belt
+  items:
+    - mortar
+    - pestle
+    - large bowl
+    - sieve
+    - mixing stick
+alchemy_tools:
+  - mortar
+  - pestle
+  - large bowl
+  - sieve
+  - mixing stick
+
+worn_instrument: cowbell
+# workorder_recipes:
+#   remedies:
+#     # Wound Remedy Basics
+#     - blister cream
+#     - moisturizing ointment
+#     - itch salve
+#     # - wart salve # sufil
+#     # - stomach tonic
+#     - lip balm
+#     # - mouth wash # blue flower
+#     # - eye wash # blue flower
+#     # - hangover potion # blue flower
+#     # - refrehsment elixir # blue flowers/belradi moss
+#     # - vigor poultices # dioica sap
+#     # External Limb Remedies
+#     - head salve
+#     #- eye salve # sufil sap
+#     - skin salve
+#     - limb salve
+#     # Internal Limb Remedies
+#     - head potion
+#     - eye potion
+#     # - limb potion # yelith root
+
+###############
+# Gear
+###############
+gear_sets:
+  standard:
+  - pitch-black buckler
+  - leather cowl
+  - lightweight leathers
+  - leather gloves
+  - parry stick
+  - knuckles
+  - knee spikes
+  - elbow spikes
+  - khor'vela staff
+  stealing:
+  - parry stick
+  naked: []
+ 
+gear:
+# ARMOR
+- :adjective: pitch-black
+  :name: buckler
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: leather
+  :name: cowl
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: lightweight
+  :name: leathers
+  :is_leather: true
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: leather
+  :name: gloves
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+#BRAWLING
+- :adjective: parry
+  :name: stick
+  :hinders_lockpicking: true
+  :is_worn: true
+- :name: knuckles
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: knee
+  :name: spikes
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: elbow
+  :name: spikes
+  :hinders_lockpicking: true
+  :is_worn: true
+#WEAPONS
+- :adjective: tapered
+  :name: cutlass
+  :is_worn: false
+- :adjective: khor'vela
+  :name: staff
+  :is_worn: true
+  :is_leather: false
+
+weapon_training:
+  Brawling: ''
+  Staves: khor'vela staff
+dance_skill: Brawling
+priority_weapons:
+- Staves
+- Brawling
+
+
+###############
+# Scrolls
+###############
+scroll_stackers:
+- scroll case
+- worn book
+discard_scrolls:
+- Burden
+- Dispel
+- Ease Burden
+- Imbue
+- Lay Ward
+- Rite of Contrition
+- Rite of Grace
+
+
+check_discern_timer_in_hours: 12
+cambrinth_num_charges: 4
+
+
+# HE script
+grave_junk:
+- flat stone
+- scratched jawbone
+- bone ring
+- round stone
+- pin
+- shell
+- rib
+- finger
+- slug
+- tooth
+- hair
+- feather
+- spleen
+- shin bone
+- spectacles
+- linen
+- parchment
+- grub
+- tail
+- carapace
+- jawbone
+- ratskin
+- earring
+- ribbon
+- deobar
+- decayed skull
+- rock
+- hag
+- cockroach
+- hand-puppet
+- mirror
+- roll
+- earthworms
+- sweater
+- sash
+- gown
+- socks
+- veil
+- blouse
+- wedding
+- bone shards
+- sacrum
+- rune-carved stone
+- gloves
+- intestines
+- spine
+- skull
+- arm
+- foreleg
+- wing
+- leg
+- bone
+- pillow
+- sandwich
+- skeleton
+- tart
+- gloves
+- fly
+- shards
+- maggots
+- beetle
+- sticks
+- gown
+- millipede
+- cockroach
+
+###############
+# Magic
+###############
+
+offensive_spell_mana_threshold: 70
+training_spell_mana_threshold: 70
+buff_spell_mana_threshold: 70
+
+ic: &ic
+  Iron Constitution:
+    mana: 5
+    recast: -1
+    use_auto_mana: true
+mef: &mef
+  Mental Focus:
+    mana: 5
+    use_auto_mana: true
+    cambrinth:
+    - 10
+    - 10
+    - 10
+    - 10
+vh: &vh
+  Vitality Healing:
+#    use_auto_mana: true
+    mana: 5
+    cambrinth:
+    - 5
+    - 5
+    - 5
+    - 5
+vig: &vig
+  Vigor:
+    recast: -1
+    use_auto_mana: true
+    mana: 15
+    cambrinth:
+    - 5
+    - 5
+    - 3
+vigpet: &vigpet
+  Vigor:
+    pet_type: warrior
+    recast_every: 2100 # 35 minutes
+    cast: cast warrior
+    mana: 15
+    cambrinth:
+    - 5
+    - 5
+    - 3
+gol: &gol
+  Gift of Life:
+    use_auto_mana: true
+    mana: 5
+    cambrinth:
+    - 10
+    - 10
+    - 10
+ref: &ref
+  Refresh:
+    recast: 5
+    mana: 1
+    use_auto_mana: true
+    cambrinth:
+    - 10
+    - 10
+    - 10
+    - 10
+heal: &heal
+  Heal:
+    abbrev: heal
+    recast: 2
+    use_auto_mana: true
+    mana: 15
+    cambrinth:
+    - 10
+    - 10
+    - 12
+gs: &gs
+  Guardian Spirit:
+    abbrev: gs
+    mana: 6
+    recast: -1
+    cyclic: true
+    cast: cast custom
+    command: warrior to behavior aggressive
+#    expire: appears suddenly less real
+reg: &reg
+  Regenerate:
+    mana: 7
+inn: &inn
+  Innocence:
+    abbrev: inno
+#    use_auto_mana: true
+    recast: 0
+    mana: 5
+    cambrinth:
+    - - 15
+      - 15
+    - - 15
+      - 10
+fp: &fp
+  Flush Poisons:
+    abbrev: fp
+    use_auto_mana: true
+    mana: 15
+    cambrinth:
+    - 10
+    - 10
+    - 12
+cd: &cd
+  Cure Disease:
+    abbrev: cd
+    mana: 15
+    use_auto_mana: true
+    cambrinth:
+    - 10
+    - 10
+    - 12
+foc: &foc
+  Fountain of Creation:
+    abbrev: foc
+    use_auto_mana: true
+    mana: 39
+bs: &bs
+  Blood Staunching:
+    abbrev: bs
+    use_auto_mana: true
+hw: &hw
+  Heal Wounds:
+    abbrev: hw
+    use_auto_mana: true
+hs: &hs
+  Heal Scars:
+    abbrev: hs
+    use_auto_mana: true
+gaf: &gaf
+  Gauge Flow:
+    abbrev: gaf
+    recast: 15
+    mana: 5
+    cambrinth:
+      - - 10
+        - 10
+        - 10
+        - 5
+      - - 10
+        - 10
+        - 10
+        - 10
+#    use_auto_mana: true
+
+buffs: &buffs
+  << : *ic
+#  << : *fp
+  << : *vig
+  << : *mef
+  << : *ref
+  << : *gol
+#  << : *heal
+
+
+buff_spells: &buff_spells
+  << : *gs
+  << : *vigpet
+  << : *buffs
+  << : *ic
+waggle_sets:
+  default:
+    << : *buffs
+  prebuff:
+    << : *buffs
+  foc:
+    << : *foc
+  boxes:
+    << : *ic
+    << : *heal
+  gol:
+    << : *gol
+  weapons:
+    << : *ref
+    << : *heal
+  healing:
+    << : *mef
+    << : *gol
+  heal:
+    << : *heal
+  bpet:
+    << : *vigpet
+  reg:
+    << : *reg
+  regen:
+    << : *reg
+  mef:
+    << : *mef
+  vh:
+    << : *vh
+  inn:
+    << : *inn
+  gaf:
+    << : *gaf
+  bs:
+    << : *bs
+  hw:
+    << : *hw
+  hs:
+    << : *hs
+  burgle:
+  ic:
+    << : *ic
+
+training_list:
+  # - skill: Alchemy
+  #   start: 15
+  #   scripts:
+  #     - workorders remedies
+  #     - go2 home
+  # # - skill: Outfitting
+  #   start: 15
+  #   scripts:
+  #     - workorders tailoring
+  #     - go2 home
+  - skill: Utility
+    start: 10
+    scripts:
+      - buff gaf
+      - researcher utility
+  - skill: Attunement
+    start: 10
+    scripts:
+      - buff gaf
+      - researcher attunement
+  - skill:
+    - Warding
+    start: 10
+    scripts:
+      - buff gaf
+      - researcher warding
+  - skill:
+    - Life Magic
+    - Arcana
+    start: 10
+    scripts:
+      - buff gaf
+      - researcher fundamental
+  - skill: Augmentation
+    start: 10
+    scripts:
+      - buff gaf
+      - researcher augmentation
+  - skill: Outdoorsmanship
+    start: 15
+    scripts:
+      - go2 home
+      - outdoorsmanship 100
+  - skill: Appraisal
+    start: 10
+    scripts:
+      - appraisal
+  - skill: Athletics
+    start: 10
+    scripts:
+      - athletics
+
+empty_hunting_room_messages:
+- Is anyone else in here?
+- Anyone about?
+
+tarantula:
+  Armor:
+    non_combat:
+      - Chain Armor
+      - Plate Armor
+      - Brigandine
+  Lore:
+    non_combat:
+      - Appraisal
+      - Performance
+      - Scholarship
+  Survival:
+    combat:
+      - Skinning
+    non_combat:
+      - Outdoorsmanship
+      - Athletics
+      - Thievery
+      - Stealth
+  Magic:
+    non_combat:
+      - Warding
+      - Arcana
+tarantula_no_use_scripts:
+  - researcher
+tarantula_excluded_skills:
+    - Evasion
+    - Empathy
+    - Parry Ability
+    - Shield Usage
+    - Targeted Magic
+
+textsub_no_use_scripts:
+  - go2
+
+####
+# Personal Aliases - run ;fixalias to setup
+# Added here in case we need to reinstall
+####
+aliases:
+  # Osh Healing Specific
+  - alias: ht
+    command: ',var set healtarget=\? \r touch \? \r link \? persist'
+  - alias: taqa
+    command: ',e multifput("take #{UserVars.healtarget} vit quick", "take #{UserVars.healtarget} all quick")'
+  - alias: phs
+    command: perc health self
+  - alias: pht
+    command: ',e fput("perc health #{UserVars.healtarget}")'
+  - alias: tav
+    command: ',e fput("take #{UserVars.healtarget} vit")'
+  - alias: tavq
+    command: ',e fput("take #{UserVars.healtarget} vit quick")'
+  - alias: taw
+    command: ',e fput("take #{UserVars.healtarget} all")'
+  - alias: tawq
+    command: ',e fput("take #{UserVars.healtarget} all quick")'
+  - alias: lac
+    command: link all cancel
+  - alias: lba
+    command: link all cancel
+  
+  # Quick Spells
+  - alias: vh
+    command: |
+      ,buff vh
+  
+
+  # Osh Crafting Specific
+  - alias: bag
+    command: |
+      ,e fput("put \? in #{get_settings['crafting_container']}")
+  - alias: obelt
+    command: |
+      ,e fput("tie \? to #{get_settings['outfitting_belt']['name']}")
+  - alias: abelt
+    command: |
+      ,e fput("tie \? to #{get_settings['alchemy_belt']['name']}")

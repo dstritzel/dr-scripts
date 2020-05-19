@@ -1,0 +1,245 @@
+---
+# https://elanthipedia.play.net/Paladin#Circle_Requirements
+# 3 Magics: Arcana, Augmentation, Attunement
+# 4 Weapons (only 2 are needed to circle): Brawling, Heavy Thrown, Polearms, Twohanded Edged
+# 2 Armors: Plate Armor, Shield Usage
+# 4 Survivals: Athletics, Perception, Skinning, Outdoorsmanship (Does not include Evasion)
+# 3 Lores: Appraisal, Tactics, Scholarship
+
+# You do not need to train any more Magic skills to circle
+# However, you will probably end up training them all since they each have very useful spells
+# The other Magic skills are: Targeted Magic, Warding, Debilitation, Utility
+# Room Data
+safe_room: &safe_room 12225
+outdoor_room: 8251
+lockpick_room_id: *safe_room
+# Hunting settings
+training_manager_hunting_priority: true
+training_manager_priority_skills:
+- Brawling
+- Heavy Thrown
+- Polearms
+- Twohanded Edged
+hunting_info:
+- :zone: beisswurms
+  :duration: 60
+  stop_on:
+  - Brawling
+  - Heavy Thrown
+  - Polearms
+  - Twohanded Edged
+#  - Large Edged
+
+# Gear settings
+gear:
+# - :adjective: example
+#   :name: gear
+#   :is_leather: true
+#   :hinders_lockpicking: false
+#   :is_worn: true
+- :adjective: half
+  :name: plate
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: plate
+  :name: greaves
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: plate
+  :name: sallet
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: plate
+  :name: gauntlets
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: oval
+  :name: shield
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: parry
+  :name: stick
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: brass
+  :name: knuckles
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: elbow
+  :name: spikes
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: bastard
+  :name: sword
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: false
+  :swappable: true
+- :adjective:
+  :name: spear
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+gear_sets:
+  standard:
+  - half plate
+  - plate sallet
+  - plate greaves
+  - plate gauntlets
+  - oval shield
+  - parry stick
+  - brass knuckles
+  - elbow spikes
+  - spear
+use_research: true
+research_skills:
+  - Augmentation
+  - Warding
+  - Utility
+
+spells:
+  aa: &aa
+    Aspirant's Aegis:
+      abbrev: aa
+      recast: 3
+      use_auto_mana: true
+  vos: &vos
+    Vessel of Salvation:
+      abbrev: vos
+      mana: 5
+  hes: &hes
+    Heroic Strength:
+      abbrev: HES
+      recast: 2
+      use_auto_mana: true
+  gaf: &gaf
+    Guage Flow:
+      abbrev: gaf
+      recast: 15
+      use_auto_mana: true
+  sr: &sr
+    Sentinel's Resolve:
+      abbrev: sr
+      recast: 2
+      use_auto_mana: true
+
+check_discern_timer_in_hours: 2
+
+# Combat settings
+offensive_spells:
+  - skill: Targeted Magic
+    name: Footman's Strike
+    abbrev: fst
+    harmless: false
+    cast_only_to_train: true
+    mana: 3
+  - skill: Debilitation
+    name: Stun Foe
+    cast_only_to_train: true
+    abbrev: sf
+    mana: 2
+
+
+buff_spells:
+  << : *hes
+  << : *aa
+  << : *sr
+
+dance_skill: Polearms
+training_abilities:
+  Tactics: 30
+  Hunt: 80
+  Perc: 120
+  Smite: 61
+weapon_training:
+  Brawling: ''
+  Polearms: spear
+  Heavy Thrown: spear
+  Large Edged: bastard sword
+  Twohanded Edged: bastard sword
+priority_weapons:
+  - Brawling
+  - Heavy Thrown
+skinning:
+  skin: true
+  arrange_all: false
+  arrange_count: 0
+  tie_bundle: true
+
+# Non-combat settings
+exp_timers:
+  Attunement: 130
+crossing_training:
+- Appraisal
+- Athletics
+- Perception
+#- Augmentation
+#- Warding
+#- Utility
+- Attunement
+- Outdoorsmanship
+- Scholarship
+#- Lockpicking
+training_spells:
+  Augmentation:
+    abbrev: HES
+  Warding:
+    abbrev: AA
+  Utility:
+    abbrev: GAF
+
+cambrinth: cambrinth tailband
+cambrinth_cap: 50
+tithe: true
+favor_goal: 10
+favor_god: Chadatru
+paladin_use_badge: true
+
+waggle_sets:
+  default:
+    << : *aa
+    << : *hes
+    << : *sr
+  prehunt_buffs:
+    << : *aa
+    << : *hes
+    << : *sr
+  aa:
+    << : *aa
+  sr:
+    << : *sr
+  vos:
+    << : *vos
+  gaf:
+    << : *gaf
+# Picking Settings
+picking_box_source: backpack
+stop_pick_on_mindlock: false
+
+# if true, will attempt to pull money from the nearest bank if you have no money for fares
+bescort_fare_handling: true
+# hide when on the ferries and suchlike
+bescort_hide: false
+
+####
+# Personal Aliases - run ;fixalias to setup
+# Added here in case we need to reinstall
+####
+aliases:
+  # Osh Healing Specific
+  # - alias: ht
+  #   command: ',var set healtarget=\? \r touch \? \r link \? persist'
+
+
+empty_hunting_room_messages:
+- Is anyone else in here?
+- Anyone about?
+- Mrrp? Anyone herre?

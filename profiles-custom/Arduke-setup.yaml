@@ -1,0 +1,276 @@
+---
+# https://elanthipedia.play.net/Warrior_Mage#Circle_Requirements
+# 3 Magics: Arcana, Targeted Magic, Attunement
+# 5 Weapons (only 3 are needed to circle): Brawling, Heavy Thrown, Polearms, Large Edged, Twohanded Edged
+# 2 Armors (only 1 is needed to circle): Chain Armor, Shield Usage
+# 4 Survivals: Athletics, Perception, Skinning, Outdoorsmanship
+# 3 Lores: Appraisal, Tactics, Scholarship
+
+# Eventually you will need to train 2 more Magics to circle (for a total of 5)
+# However, you will probably end up training them all since they each have very useful spells
+# The other Magic skills are: Augmentation, Warding, Debilitation, Utility
+
+# Hunting settings
+Hometown: Crossing
+force_healer_town: Fang Cove
+training_manager_town_duration: 39
+training_manager_hunting_priority: true
+training_manager_priority_skills:
+- Targeted Magic
+- Large Edged
+- Light Thrown
+hunting_info:
+  - :zone: endrus_serpents
+    :duration: 60
+
+
+# Gear settings
+
+
+
+default_stance: 40 40 100
+
+priority_defense: Parry Ability
+
+
+stances:
+  Brawling:
+  - Parry Ability
+  - Evasion
+  - Shield Usage
+  # Small Edged:
+  # - Shield Usage
+  # - Parry Ability
+  # - Evasion
+  Large Edged:
+  - Parry Ability
+  - Evasion
+  - Shield Usage
+
+
+dance_skill: Large Edged
+training_abilities:
+  Tactics: 30
+  Hunt: 80
+  Perc: 120
+#  Analyze: 120
+  App Quick: 120
+  
+weapon_training:
+  Brawling: ''
+#  Small Edged: scimitar
+  Large Edged: broadsword
+  Light Thrown: bola
+summoned_weapons:
+#- name: Small Edged
+- name: Large Edged
+- name: Light Thrown
+
+skinning:
+  skin: true
+  arrange_all: false
+  arrange_count: 5
+  tie_bundle: false
+
+# Non-combat settings
+crossing_training:
+- Summoning
+- Appraisal
+#- Stealth
+- Athletics
+#- Perception
+#- Attunement
+#- Scholarship
+- Outdoorsmanship
+- Warding
+- Augmentation
+- Utility
+use_research: true
+research_skills:
+- Utility
+- Warding
+- Augmentation
+
+safe_room: 984
+cambrinth: cambrinth tailband
+cambrinth_cap: 50
+favor_goal: 15
+favor_god: Meraud
+
+
+
+training_spells:
+  Warding:
+    abbrev: es
+    symbiosis: false
+    use_auto_mana: true
+  Augmentation:
+    abbrev: Substratum
+    symbiosis: false
+    use_auto_mana: true
+  Utility:
+    abbrev: Ignite
+    use_auto_mana: true
+
+footwear: boots
+textbook: true
+textbook_type: textbook
+
+buff_nonspells:
+  pathway focus quick: 300
+
+priority_weapons:
+  - Targeted Magic
+
+#####
+# Burgle
+#####
+burgle_settings:
+  lockpick_container: lockpick ring
+  room: 1879
+  entry_type: lockpick                      # lockpick | rope | cycle
+  use_lockpick_ring: true
+  max_search_count: 2
+  loot: pawn
+  safe_mode: true
+  loot_container: backpack
+  room_blacklist:                           # array of rooms to ignore. Case sensitive.
+    - Bedroom
+    - Kitchen
+  item_whitelist:
+    - memory orb
+
+training_list:
+- skill: Athletics
+  start: 16
+  scripts:
+    - athletics
+- skill: Appraisal
+  start: 5
+  scripts:
+    - appraisal
+- skill: Outdoorsmanship
+  start: 16
+  scripts:
+    - go2 home
+    - outdoorsmanship 32
+- skill: Warding
+  start: 10
+  scripts:
+    - burgle start
+    - go2 home
+    - researcher warding
+- skill: Utility
+  start: 10
+  scripts:
+    - burgle start
+    - go2 home
+    - researcher utility
+- skill: Augmentation
+  start: 10
+  scripts:
+    - burgle start
+    - go2 home
+    - researcher augmentation
+- skill: Attunement
+  start: 10
+  scripts:
+    - burgle start
+    - go2 home
+    - researcher attunement
+
+gear:
+# - :adjective: example
+#   :name: gear
+#   :is_leather: true
+#   :hinders_lockpicking: false
+#   :is_worn: true
+- :adjective: chain
+  :name: shirt
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: chain
+  :name: gloves
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: chain
+  :name: balaclava
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: chain
+  :name: greaves
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: pot
+  :name: lid
+  :is_leather: false
+  :is_worn: false
+  :hinders_lockpicking: true
+- :adjective: parry
+  :name: stick
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+
+  
+gear_sets:
+  standard:
+  - chain balaclava
+  - chain gloves
+  - chain shirt
+  - chain greaves
+  - parry stick
+  - pot lid
+buff_spells:
+  # Zephyr:
+  #   abbrev: zephyr
+  #   mana: 5
+  #   recast: 3
+  #   cambrinth:
+  #     - 3
+  #     - 2
+  Ignite:
+    abbrev: Ignite
+    recast: -1
+    mana: 5
+    cambrinth:
+      - 4
+  Substratum:
+    use_auto_mana: true
+  Ethereal Shield:
+    use_auto_mana: true
+
+check_discern_timer_in_hours: 1
+
+waggle_sets:
+  gaf:
+    Gauge Flow:
+      recast: 15
+      use_auto_mana: true
+
+# Combat settings
+offensive_spells:
+- skill: Targeted Magic
+  name: Fire Shards
+  abbrev: fs
+  cast_only_to_train: false
+  mana: 12
+- skill: Debilitation
+  name: Mark of Arhat
+  abbrev: moa
+  cast_only_to_train: true
+  use_auto_mana: true
+# - skill: Debilitation
+#   name: Ice Patch
+#   abbrev: ip
+#   cast_only_to_train: true
+#   use_auto_mana: true
+use_lockpick_ring: true
+lockpick_container: ring
+picking_box_source: backpack
+stop_pick_on_mindlock: false
+harvest_traps: false

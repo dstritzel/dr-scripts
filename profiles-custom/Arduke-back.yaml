@@ -1,0 +1,24 @@
+offensive_spells:
+- skill: Debilitation
+  name: Burden
+  cast_only_to_train: true
+  use_auto_mana: true
+
+weapon_training:
+  Large Edged: broadsword
+  Light Thrown: bola
+  
+training_manager_priority_skills:
+- Large Edged
+- Light Thrown
+
+prioity_weapons:
+- Light Thrown
+
+summoned_weapons:
+- name: Light Thrown
+- name: Large Edged
+
+dance_skill: Large Edged
+priority_defense: Shield Usage
+stance_override: 40 40 100

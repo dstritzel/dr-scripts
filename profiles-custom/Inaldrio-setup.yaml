@@ -1,0 +1,469 @@
+---
+# https://elanthipedia.play.net/Moon_mage#Circle_Requirements
+# 4 Magics: Augmentation, Attunement, Arcana, Targeted Magic/Debilitation (Does not include Lunar Magic or Astrology)
+# 4 Survivals: Perception, Athletics, Evasion, Skinning (Does not include Thievery)
+# 3 Lores: Appraisal, Tactics, Mechanical Lore (Does not include Scholarship)
+# 2 Additional: Astrology, Scholarship
+
+# It is recommended to get a target or debilitation spell for your second circle. (e.g. Dinazen Olkar or Calm)
+# Please see the 'offensive_spells:' setting below for a commented (unused) example. Uncomment to begin usage (remove #'s).
+
+# Eventually you will need to train 3 more Magics to circle (for a total of 7)
+# Eventually you will need to train 1 more Survival to circle (for a total of 5)
+
+# Hunting settings
+training_manager_hunting_priority: true
+training_manager_priority_skills:
+- Targeted Magic
+- Small Edged
+- Shield Usage
+hunting_info:
+- :zone: endrus_serpents
+  :duration: 30
+  stop_on:
+  - Shield Usage
+  - Evasion
+  - Skinning
+  - Tactics
+
+# Gear settings
+gear:
+# - :adjective: example
+#   :name: gear
+#   :is_leather: true
+#   :hinders_lockpicking: false
+#   :is_worn: true
+- :adjective: hooded
+  :name: cloak
+  :is_leather: true
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: quilted
+  :name: mask
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: quilted
+  :name: pants
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: target
+  :name: shield
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: parry
+  :name: stick
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: brass
+  :name: knuckles
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+gear_sets:
+  standard:
+  - hooded cloak
+  - quilted mask
+  - quilted pants
+  - target shield
+  - parry stick
+  - brass knuckles
+
+# Combat settings
+
+# Uncomment (remove #'s) to train Targeted Magic/Debilitation with the listed spells (or change to use different spells).
+offensive_spells:
+  - skill: Targeted Magic
+    name: Dinazen Olkar
+    abbrev: do
+    cast_only_to_train: true
+    mana: 10
+  - skill: Debilitation
+    name: Calm
+    abbrev: calm
+    mana: 8
+    cast_only_to_train: true
+
+burgle_settings:
+    lockpick_container: tote
+    room: 1879
+    entry_type: lockpick                      # lockpick | rope | cycle
+    use_lockpick_ring: false
+    max_search_count: 2
+    loot: keep
+    safe_mode: true
+    loot_container: blue sack
+    room_blacklist:                           # array of rooms to ignore. Case sensitive.
+    #  - Bedroom
+      - Kitchen
+
+dance_skill: Small Edged
+training_abilities:
+#  Stealth: 60
+  Tactics: 20
+  PercMana: 240
+  Hunt: 80
+  App Quick: 60
+
+
+priority_weapons:
+  - Small Edged
+  - Targeted Magic
+  - Brawling
+
+use_stealth_attacks: false
+
+skinning:
+  skin: true
+  arrange_all: true
+  arrange_count: 0
+  tie_bundle: true
+
+sell_loot_pouch: true
+# Non-combat settings
+exp_timers:
+  Astrology: 200
+  Attunement: 130
+  Thievery: 2160
+
+crossing_training:
+- Astrology
+- Augmentation
+- Scholarship
+- Attunement
+- Appraisal
+- Athletics
+- Perception
+- Outdoorsmanship
+- Utility
+- Warding
+
+bescort_fare_handling: true
+
+have_telescope: true
+
+divination_bones_storage:
+
+divination_tool:
+  name: celestial charts
+  container: 'case'
+
+safe_room: 19162
+
+
+
+
+weapon_training:
+  Brawling: ''
+  Small Edged: moonblade
+
+summoned_weapons:
+  - name: Small Edged
+
+training_spells:
+  Augmentation:
+    abbrev: shadows
+  Utility:
+    abbrev: pg
+  Warding:
+    abbrev: psy
+
+cambrinth: cambrinth armband
+cambrinth_cap: 32
+favor_god: Meraud
+favor_goal: 30
+
+offensive_spell_mana_threshold: 40
+training_spell_mana_threshold: 50
+buff_spell_mana_threshold: 40
+prep_scaling_factor: 0.90
+
+# Spell Aliases 
+spells:
+  rf: &rf
+    Refractive Field:
+      abbrev: rf
+      use_auto_mana: true
+  ts: &ts
+    Tenebrous Sense:
+      recast: 5
+      abbrev: ts
+      use_auto_mana: true
+  pg: &pg
+    Piercing Gaze:
+      abbrev: pg
+      recast: 5
+      mana: 5
+      cambrinth:
+        - 10
+        - 10
+        - 8
+        - 2
+  seer: &seer
+    Seer's Sense:
+      abbrev: seer
+      user_auto_mana: true
+  dg: &dg
+    Distant Gaze:
+      abbrev: dg
+      recast: 5
+      mana: 15
+      cambrinth:
+        - 6
+        - 6
+        - 5
+  th: &th
+    Thoughtcast:
+      abbrev: th
+      recast: 10
+      use_auto_mana: true
+  cv: &cv
+    Clear Vision:
+      abbrev: cv
+      recast: 5
+      mana: 1
+      cambrinth:
+        - 10
+        - 10
+        - 10
+        - 5
+  aus: &aus
+    Aura Sight:
+      recast: 5
+      use_auto_mana: true
+  shadows: &shadows
+    Shadows:
+      abbrev: shadows
+      recast: 1
+      mana: 1
+      cambrinth:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+  shadowling: &shadowling
+    Shadowling:
+      abbrev: shadowling
+      recast: 1
+      mana: 15
+      cambrinth:
+        - 6
+        - 6
+        - 6
+  dc: &dc
+    Destiny Cipher:
+      abbrev: dc
+      mana: 50
+  col: &col
+    Cage of Light:
+      recast: 1
+      abbrev: col
+      use_auto_mana: true
+
+buff_spells:
+  Moonblade:
+    recast_every: 900
+    cambrinth:
+    - 15
+  << : *shadows
+  << : *pg
+  << : *shadowling
+  << : *col
+  << : *th
+
+# Spell and Buff Sets
+waggle_sets:
+  default:
+    << : *pg
+    << : *shadows
+    << : *shadowling
+    << : *th
+  astrology:
+    << : *pg
+    << : *cv
+    << : *aus
+    << : *dc
+    << : *th
+  col:
+    << : *col
+    << : *th
+  gaf:
+    << : *th
+    Gauge Flow:
+      recast: 16
+      mana: 5
+      cambrinth:
+        - 7
+        - 7
+        - 7
+        - 7
+  rf:
+    << : *th
+    << : *rf
+  pg:
+    << : *th
+    << : *pg
+  ts:
+    << : *th
+    << : *ts
+  shadowling:
+    << : *th
+    << : *shadowling
+  burgle:
+    << : *th
+  #   << : *rf
+  #   << : *shadows
+  #   << : *ts
+  seer:
+    << : *th
+    << : *seer
+  aus:
+    << : *th
+    << : *aus
+  th:
+    << : *th
+  gate:
+  #  << : *dg
+    << : *th
+    << : *cv
+
+workorder_diff: challenging
+crafting_container: blue sack
+enchanting_tools:
+- simple burin
+- augmenting loop
+#- brazier
+- fragile fount
+- imbuement rod
+
+astrology_use_full_pools: false
+
+almanac_no_use_scripts:
+- sew
+- carve
+- tinker
+- forge
+- remedy
+- shape
+- enchant
+- combat-trainer
+- go2
+- get2
+- bescort
+- steal
+- astrology
+- clean-leather
+- clean-lumber
+- craft
+- scouting
+- athletics
+- outdoorsmanship
+- mech-lore
+- corn-maze
+- researcher
+
+walkingastro_no_use_scripts:
+- sew
+- carve
+- tinker
+- forge
+- remedy
+- shape
+- enchant
+- combat-trainer
+- buff
+- steal
+- performance
+- astrology
+- mech-lore
+- first-aid
+- study-art
+- craft
+- pick
+- bescort
+- workorders
+- researcher
+
+textsubs:
+  debug: true
+  load:
+    - Moon Mage Predictions
+  # block:
+  #   - Moon Mage
+
+training_list:
+  - skill: Astrology
+    start: 10
+    scripts:
+      - burgle start
+      - go2 home
+      - buff astrology
+      - astrology
+  - skill: Enchanting
+    start: 5
+    scripts:
+      - burgle start
+      - workorders artificing
+      - go2 home
+  - skill: Outdoorsmanship
+    start: 5
+    scripts:
+      - burgle start
+      - go2 home
+      - outdoorsmanship 100
+  - skill: Appraisal
+    start: 10
+    scripts:
+      - burgle start
+      - appraisal
+  - skill: Athletics
+    start: 10
+    scripts:
+      - burgle start
+      - athletics
+  - skill: Utility
+    start: 2
+    scripts:
+      - burgle start
+      - go2 home
+      - buff gaf
+      - researcher utility
+  - skill: Attunement
+    start: 2
+    scripts:
+      - burgle start
+      - buff gaf
+      - researcher attunement
+  - skill:
+    - Warding
+    start: 2
+    scripts:
+      - burgle start
+      - go2 home
+      - buff gaf
+      - researcher warding
+  # - skill:
+  #   - Lunar Magic
+  #   - Arcana
+  #   start: 2
+  #   scripts:
+  #     - buff gaf
+  #     - researcher fundamental
+  # - skill: Augmentation
+  #   start: 2
+  #   scripts:
+  #     - buff gaf
+  #     - researcher augmentation
+
+trash_room: 12225
+
+trash_container:
+  - duffle_bag
+
+trash_items:
+  - red flowers
+  - cougar-pelt leather

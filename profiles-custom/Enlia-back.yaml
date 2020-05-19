@@ -1,0 +1,87 @@
+---
+# https://elanthipedia.play.net/Barbarian#Circle_Requirements
+# 5 Weapons (only 4 are needed to circle): Brawling, Heavy Thrown, Polearms, Large Edged, Twohanded Edged
+# 2 Armors: Light Armor, Shield Usage
+# 4 Survivals: Athletics, Perception, Skinning, Stealth (Does not include Evasion)
+# 1 Lore: Appraisal
+# 1 Supernatural: Augmentation
+
+# Eventually you will need to train 1 more Supernatural to circle (for a total of 2)
+# However, you will probably end up training them all since they each have very useful abilities
+# The other Supernatural skills are: Warding, Debilitation
+
+# Hunting settings
+training_manager_hunting_priority: true
+training_manager_priority_skills:
+# Brawling
+- Heavy Thrown
+- Polearms
+#- Large Edged
+- Twohanded Edged
+#- Light Thrown
+#- Small Edged
+- Small Blunt
+- Polearms
+
+hunting_info:
+- :zone: beisswurms
+  stop_on:
+#  - Brawling
+  - Heavy Thrown
+  - Polearms
+#  - Large Edged
+  - Twohanded Edged
+
+using_light_crossbow: true
+
+aiming_trainables:
+#- Tactics
+#- Brawling
+#- Small Edged
+- Small Blunt
+#- Light Thrown
+
+dance_skill: Small Blunt
+#combat_trainer_target_increment: 4
+training_abilities:
+  Charged Maneuver: 30
+#  Stealth: 60
+  Hunt: 180
+  Tactics: 60
+#  App Quick: 120
+
+storage_containers:
+- carryall
+- war belt
+- haversack
+- hip pouch
+
+weapon_training:
+#  Brawling: ''
+  Heavy Thrown: spear
+  Polearms: spear
+#  Large Edged: riste
+  Twohanded Edged: claymore
+  Twohanded Blunt: riste
+#  Large Blunt: riste
+  Small Blunt: triple-weighted bola
+#  Light Thrown: throwing dagger
+#  Small Edged: cavalry sabre
+#  Crossbow: light crossbow
+#  Offhand Weapon: calavry sabre
+
+priority_weapons:
+#  - Brawling
+#  - Large Edged
+#  - Polearms
+#  - Heavy Thrown
+  - Twohanded Edged
+  - Twohanded Blunt
+
+priority_defense: Parry Ability
+
+# Combat settings
+buff_nonspells:
+  roar quiet rage: 90
+  berserk avalanche: 60
+#  form eagle: 300

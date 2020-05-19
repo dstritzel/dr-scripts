@@ -1,0 +1,271 @@
+---
+# https://elanthipedia.play.net/Thief#Circle_Requirements
+
+# 1 Magic: Augmentation
+# 4 Weapons (only 2 are needed to circle): Brawling, Small Edged, Small Blunt, Light Thrown
+# 2 Armors (only 1 is needed to circle): Light Armor, Shield Usage
+# 8 Survivals: Stealth, Thievery, Athletics, Perception, Skinning, Evasion, Locksmithing, Backstab
+# 3 Lores: Appraisal, Tactics, Scholarship
+
+# Eventually you will need to train 1 more Magic to circle (for a total of 2)
+# However, you will probably end up training them all since they each have very useful abilities
+# The other Magic skills are: Utility, Debilitation
+
+# Hunting settings
+hometown: Crossing
+force_healer_town: Fang Cove
+bescort_hide: false
+training_manager_hunting_priority: true
+training_manager_priority_skills:
+- Small Edged
+#- Small Blunt
+#- Light Thrown
+- Skinning
+#- Backstab
+- Tactics
+hunting_info:
+- :zone: granite_gargoyles_monastary
+  stop_on:
+  - Small Edged
+#  - Small Blunt
+#  - Light Thrown
+  - Evasion
+  - Skinning
+#  - Backstab
+#  - Tactics
+  :duration: 30
+  args:
+    - d2
+
+typeahead: 2
+stance_override: 100 40 41
+# Gear settings
+gear:
+# - :adjective: example
+#   :name: gear
+#   :is_leather: true
+#   :hinders_lockpicking: false
+#   :is_worn: true
+- :adjective: serpent-skin
+  :name: leathers
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: leather
+  :name: cowl
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: leather
+  :name: gloves
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: ordinary
+  :name: shield
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: parry
+  :name: stick
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: brass
+  :name: knuckles
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: elbow
+  :name: spikes
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :name: telek
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: false
+  :swappable: false
+- :adjective: icy-blue
+  :name: blade
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: false
+  :swappable: false
+  :skip_repair: true
+- :adjective: throwing
+  :name: spike
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: false
+  :swappable: true
+gear_sets:
+  standard:
+  - serpent-skin leathers
+  - leather cowl
+  - ordinary shield
+  - parry stick
+  - brass knuckles
+  - elbow spikes
+  - leather gloves
+  stealing:
+  - parry stick
+  - elbow spikes
+  naked: []
+
+    
+burgle_settings:
+    lockpick_container: lockpick ring
+    room: 1879
+    entry_type: rope                      # lockpick | rope | cycle
+    use_lockpick_ring: true
+    max_search_count: 2
+    loot: bin
+    safe_mode: true
+    loot_container: sack
+    room_blacklist:                           # array of rooms to ignore. Case sensitive.
+        - Kitchen
+    # item_whitelist:
+
+sell_loot_pouch: true
+
+# Combat settings
+# backstab:
+#    - Small Edged
+ambush: true
+use_weak_attacks: false
+use_stealth_attacks: true
+training_abilities:
+  Tactics: 30
+  Hunt: 77
+  Analyze: 120
+  App Quick: 120
+weapon_training:
+  Brawling: ''
+  Small Edged: telek
+#  Small Blunt: throwing spike
+  Light Thrown: throwing spike
+priority_weapons:
+  - Light Thrown
+#  - Small Edged
+priority_defense: Parry Ability
+kneel_khri: true
+buff_nonspells:
+  khri:
+  - Hasten
+  - Dampen
+  - Focus
+  - Strike
+  - Prowess
+skinning:
+  skin: true
+  arrange_all: true
+  arrange_count: 1
+  tie_bundle: true
+
+# Non-combat settings
+exp_timers:
+#  Stealth: 300
+#  Locksmithing: 600
+#  Thievery: 600
+  Augmentation: 600
+  Utility: 600
+train_with_spells: false
+training_nonspells:
+  Augmentation: Khri Focus
+  Utility: Khri Dampen
+crossing_training:
+- Augmentation
+- Utility
+- Perception
+- Appraisal
+- Athletics
+- Scholarship
+hide_to_steal: false
+bin_stolen: true
+slow_bin_speed: true
+stealing_bag: sack
+favor_goal: 15
+favor_god: Meraud
+
+safe_room: &safe_room 12225
+safe_room_id: *safe_room
+safe_room_empath: Oshwoveu
+
+use_lockpick_ring: true
+skip_lockpick_ring_refill: false
+lockpick_container: lockpick ring
+lockpick_type: ordinary
+picking_box_source: game bag
+picking_box_storage: backpack
+component_container: grey pouch
+gem_pouch_adjective: gem
+stop_pick_on_mindlock: false
+stealing_buffs:
+  khri:
+    - Darken
+    - Focus
+    - Plunder
+
+waggle_sets:
+  pick:
+    - Focus
+    - Sight
+    - Hasten
+    - Safe
+  burgle:
+    - Plunder
+#    - Slight
+    - Sight
+    - Silence
+    - Shadowstep
+    
+hunting_buddies:
+- Oshwoveu
+
+textbook: true
+textbook_type: textbook
+
+training_list:
+  - skill: Outdoorsmanship
+    start: 15
+    scripts:
+      - burgle start lockpick bin
+      - go2 home
+      - outdoorsmanship 100
+  - skill: Appraisal
+    start: 10
+    scripts:
+      - burgle start lockpick bin
+      - appraisal
+  - skill: Athletics
+    start: 10
+    scripts:
+      - burgle start lockpick bin
+      - athletics
+  - skill:
+    - Parry Ability
+    - Shield Usage
+    - Evasion
+    start: 10
+    scripts:
+      - burgle start lockpick bin
+      - khri-stop
+      - hunting-buddy
+      - safe-room
+      - go2 prac
+      - pick
+      - khri-stop
+      - go2 locksmith
+      - sell-trap
+      - sell-loot
+  - skill: First Aid
+    start: 10
+    scripts:
+      - burgle start lockpick bin
+      - go2 prac
+      - first-aid
+      
+empty_hunting_room_messages:
+- Is anyone else in here?
+- Anyone about?

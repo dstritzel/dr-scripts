@@ -1,0 +1,171 @@
+---
+# https://elanthipedia.play.net/Bard#Circle_Requirements
+# 4 Magics: Attunement, Arcana, Utility, Augmentation
+# 3 Weapons (only 2 are needed to circle): Brawling, Heavy Thrown, Large Blunt
+# 2 Armors (only 1 is needed to circle): Light Armor, Shield Usage
+# 4 Survivals: Perception, Outdoorsmanship, Athletics, Stealth
+# 3 Lores: Appraisal, Tactics, Scholarship (Does not include Performance or Bardic Lore)
+
+# Eventually you will need to train 1 more Magic to circle (for a total of 5)
+# However, you will probably end up training them all since they each have very useful spells
+# The other Magic skills are: Warding, Targeted Magic, and Debilitation
+
+# Hunting settings
+training_manager_hunting_priority: true
+training_manager_priority_skills:
+- Light Thrown
+- Large Edged
+- Light Armor
+hunting_info:
+- :zone: grass_eels
+  :duration: 45
+  stop_on:
+  - Light Thrown
+  - Large Edged
+  - Light Armor
+  - Tactics
+  - Stealth
+
+# Gear settings
+gear:
+# - :adjective: example
+#   :name: gear
+#   :is_leather: true
+#   :hinders_lockpicking: false
+#   :is_worn: true
+- :adjective: coarse
+  :name: gloves
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: lightweight
+  :name: leathers
+  :is_leather: true
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: chain
+  :name: balaclava
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: crocodile-skin
+  :name: buckler
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: parry
+  :name: stick
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: icy-blue
+  :name: blade
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: false
+- :name: bola
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: false
+- :adjective: light
+  :name: crossbow
+  :is_leather: true
+  :hinders_lockpicking: false
+  :is_worn: true
+
+
+gear_sets:
+  standard:
+  - lightweight leathers
+  - chain balaclava
+  - coarse gloves
+  - crocodile-skin buckler
+  - parry stick
+offensive_spells:
+- skill: Targeted Magic
+  name: Breath of Storms
+  abbrev: bos
+  use_auto_mana: true
+  harmless: false
+  mana: 2
+- skill: Debilitation
+  name: Aether Wolves
+  cyclic: true
+  mana: 2
+
+# Combat settings
+dance_skill: Large Edged
+training_abilities:
+  Tactics: 30
+  Stealth: 60
+  Hunt: 80
+  Perc: 120
+  Scream: 15
+weapon_training:
+  Brawling: ''
+  Light Thrown: bola
+  Large Edged: icy-blue blade
+  Crossbow: light crossbow
+priority_weapons:
+  - Large Edged
+# Non-combat settings
+crossing_training:
+- Appraisal
+- Athletics
+- Augmentation
+- Attunement
+- Utility
+- Outdoorsmanship
+- Perception
+- Scholarship
+- Performance
+restock:
+  bolt:
+    quantity: 50
+
+hunting_buddies:
+- Arduke
+- Oshwoveu
+- Ntari
+- Arlov
+- Inaldrio
+
+use_lockpick_ring: true
+skip_lockpick_ring_refill: false
+lockpick_container: ring
+lockpick_type: ordinary
+picking_box_source: backpack
+picking_box_storage: backpack
+gem_pouch_adjective: gem
+harvest_traps: false
+
+footwear: boots
+textbook: true
+textbook_type: textbook
+
+exp_timers:
+  Attunement: 130
+  Utility: 90
+training_spells:
+  Utility:
+    abbrev: CARE
+    cyclic: true
+  Augmentation:
+    abbrev: fae
+    cyclic: true
+safe_room: 984
+cambrinth: cambrinth ring
+cambrinth_cap: 5
+favor_goal: 10
+favor_god: Faenella
+
+waggle_sets:
+  ecry:
+    Eillie's Cry:
+      abbrev: ecry
+      mana: 1
+      cambrinth:
+      - 1
+      - 1
+      - 1
+      - 1

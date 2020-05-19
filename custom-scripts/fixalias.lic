@@ -1,0 +1,10 @@
+=begin
+  Documentation: https://elanthipedia.play.net/Lich_script_repository#setupaliases
+=end
+
+@settings = get_settings
+@aliases = @settings["aliases"]
+@aliases.each do |alias_key|
+  UpstreamHook.run("<c>#{$clean_lich_char}alias add #{alias_key['alias']} = #{alias_key['command']}")
+  
+end

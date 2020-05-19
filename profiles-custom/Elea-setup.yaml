@@ -1,0 +1,113 @@
+---
+# https://elanthipedia.play.net/Bard#Circle_Requirements
+# 4 Magics: Attunement, Arcana, Utility, Augmentation
+# 3 Weapons (only 2 are needed to circle): Brawling, Heavy Thrown, Large Blunt
+# 2 Armors (only 1 is needed to circle): Light Armor, Shield Usage
+# 4 Survivals: Perception, Outdoorsmanship, Athletics, Stealth
+# 3 Lores: Appraisal, Tactics, Scholarship (Does not include Performance or Bardic Lore)
+
+# Eventually you will need to train 1 more Magic to circle (for a total of 5)
+# However, you will probably end up training them all since they each have very useful spells
+# The other Magic skills are: Warding, Targeted Magic, and Debilitation
+
+# Hunting settings
+training_manager_hunting_priority: true
+training_manager_priority_skills:
+- Heavy Thrown
+- Light Armor
+hunting_info:
+- :zone: rats
+  stop_on:
+  - Large Edged
+  - Light Armor
+  - Tactics
+  - Stealth
+
+# Gear settings
+gear:
+# - :adjective: example
+#   :name: gear
+#   :is_leather: true
+#   :hinders_lockpicking: false
+#   :is_worn: true
+- :adjective: quilted
+  :name: gambeson
+  :is_leather: true
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: royal
+  :name: shield
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+# - :adjective: parry
+  # :name: stick
+  # :is_leather: false
+  # :hinders_lockpicking: false
+  # :is_worn: true
+# - :adjective: brass
+  # :name: knuckles
+  # :is_leather: false
+  # :hinders_lockpicking: true
+  # :is_worn: true
+# - :adjective: elbow
+  # :name: spikes
+  # :is_leather: false
+  # :hinders_lockpicking: false
+  # :is_worn: true
+- :adjective: stout
+  :noun: broadsword
+  :is_leather: false
+  :is_worn: false
+  :hinders_lockpicking: true
+gear_sets:
+  standard:
+  - quilted gambeson
+  - royal shield
+#  - parry stick
+#  - brass knuckles
+#  - elbow spikes
+
+# Combat settings
+buff_spells:
+  Aether Wolves:
+    abbrev: aewo
+    recast: 1
+    mana: 2
+dance_skill: Large Edged
+training_abilities:
+  Tactics: 30
+  Stealth: 60
+  Hunt: 80
+  Perc: 120
+  Scream: 15
+weapon_training:
+  Brawling: ''
+  Large Edged: stout broadsword
+priority_weapons:
+  - Brawling
+# Non-combat settings
+crossing_training:
+- Appraisal
+- Athletics
+- Augmentation
+- Attunement
+- Utility
+- Outdoorsmanship
+- Perception
+- Scholarship
+- Performance
+exp_timers:
+  Attunement: 130
+  Utility: 90
+training_spells:
+  Utility:
+    abbrev: CARE
+    cyclic: true
+  Augmentation:
+    abbrev: ECRY
+safe_room: 984
+cambrinth: cambrinth ring
+cambrinth_cap: 5
+favor_goal: 10
+favor_god: Faenella

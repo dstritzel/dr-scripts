@@ -1,0 +1,658 @@
+---
+# https://elanthipedia.play.net/Trader#Circle_Requirements
+# Also see the Lich Trader Tutorials https://github.com/rpherbig/dr-scripts/wiki/Trader-Tutorials
+# For more settings see the wiki, profiles/base.yaml, or the other yamls in this directory
+
+# 5 Magics (None are needed to circle): Augmentation, Arcana, Attunement, Utility, Warding
+# 2 Weapons (only 1 is needed to circle at first): Small Edged, Crossbow
+# 2 Armors: Chain Armor, Shield Usage
+# 6 Survivals: Outdoorsmanship, Athletics, Perception, Skinning, Evasion, Locksmithing
+# 6 Lores (5 for circle. Trading and Appraisal are Hard Requirements): Appraisal, Tactics, Scholarship, Performance, Trading, Outfitting
+
+# You do not need to train any Magic to circle
+# However, you will probably end up training them all since they each have very useful abilities
+
+safe_room: &saferoom 8466    # Find a more private room as soon as you can.
+outdoor_room: 793
+hometown: Crossing
+### Hunting settings ###
+training_manager_hunting_priority: true
+training_manager_priority_skills:
+- Chain Armor
+- Shield Usage
+
+training_manager_town_duration: 60
+
+hunting_info:
+- :zone: granite_gargoyles_monastary
+  :duration: 30
+  args:
+    - d2
+  stop_on:
+  - Brawling
+  - Tactics
+  - Shield Usage
+
+### Gear settings - Armor, weapons ###
+### Be exact in your spelling, and make sure you can tap your gear with the <adjective> <noun>
+gear:
+- :adjective: chain
+  :name: shirt
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: chain
+  :name: balaclava
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: chain
+  :name: greaves
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: chain
+  :name: gloves
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: green-scaled
+  :name: buckler
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+
+#WEAPONS
+- :name: broadsword
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: false
+  :swappable: false
+# Brawling
+- :adjective: brass
+  :name: knuckles
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: elbow
+  :name: spikes
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: parry
+  :name: stick
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+
+# Trader Jewelery
+# - :adjective: contract
+#   :name: case
+#   :is_leather: false
+#   :is_worn: true
+#   :hinders_lockpicking: false
+#   :skip_repair: true
+
+
+gear_sets: # Only include worn things that show up in 'inv combat'
+  standard:
+  - chain shirt
+  - chain greaves
+  - chain gloves
+  - chain balaclava
+  - parry stick
+  - brass knuckles
+  - elbow spikes
+  - green-scaled buckler
+  # - contract case
+  stealing:
+  - elbow spikes
+  - parry stick
+
+priority_defense: Shield Usage
+
+### Combat settings ###
+training_abilities:
+  Tactics: 60
+  Hunt: 120
+  PercMana: 220
+  App Quick: 120
+  Analyze: 120
+
+weapon_training:
+  Brawling: ''
+  Large Edged: broadsword
+
+dance_skill: Large Edged
+
+skinning:
+  skin: true
+  arrange_all: true
+  arrange_count: 0
+  tie_bundle: true
+
+#restock:
+#  bolt:
+#    quantity: 30
+
+### Non-combat settings ###
+
+appraisal_training:
+# - bundle
+ - pouches
+ - art
+
+worn_instrument: cowbell
+ 
+full_pouch_container: spidersilk cloak
+crossing_training:
+  # - Locksmithing
+  - Perception
+  # - Outfitting
+  - Performance # Ask around for a set of zills
+  # - Trading
+  - Athletics
+  - Outdoorsmanship
+  - Appraisal
+  - Scholarship
+  - Augmentation
+  - Utility
+  # - Forging
+  - Attunement
+  - First Aid
+
+favor_goal: 15
+favor_god: Kertigen
+
+prep_scaling_factor: 0.90
+# used with use_auto_mana. How often it will check discerns in hours. Lower circle/ranks should check more often.
+check_discern_timer_in_hours: 4
+spells:
+  noum: &noum
+    Noumena:
+      use_auto_mana: true
+  fin: &fin
+    Finesse:
+      abbrev: FIN
+      recast: 1
+      use_auto_mana: true
+  gaf: &gaf
+    Gauge Flow:
+      abbrev: gaf
+      recast: 15
+      use_auto_mana: true
+  phk: &phk
+     Platinum Hands of Kertigen:
+      abbrev: phk
+      recast: 3
+      use_auto_mana: true
+  lgv: &lgv
+    Last Gift of Vithwok IV:
+      recast: 2
+      mana: 5
+      cambrinth:
+        - - 5
+          - 5
+  trc: &trc
+    Trabe Chalice:
+      recast: 2
+      use_auto_mana: true
+### Magic Settings ###
+### go through the steel door in the trader's guild vaults to see the Negotiants. Ask them about magic, or GET NEGOTIANT for your very own tessera ###
+buff_spells: # these buff spells are called in combat-trainer
+  << : *noum
+  << : *fin
+  Nonchalance:
+    recast: 2
+    use_auto_mana: true
+  << : *gaf
+  << : *lgv
+  << : *trc
+
+offensive_spells: # these offensive_spells are cast in combat-trainer
+- skill: Debilitation
+  name: Fluoresce
+  harmless: true
+  cast_only_to_train: true
+  mana: 2
+- skill: Targeted Magic
+  name: Crystal Dart
+  abbrev: crd
+  mana: 7
+- skill: Targeted Magic
+  name: Strange Arrow # This will cast only if you run out of starlight
+  use_auto_mana: true
+
+aura_frequency: 180
+cambrinth_invoke_exact_amount: true
+
+#WAGGLES - these are called when using ;buff.  See https://github.com/rpherbig/dr-scripts/wiki/Waggle-Sets
+#If you're looking at other examples in /profiles you may need to read https://github.com/rpherbig/dr-scripts/wiki/YAML-Anchors
+#If you don't understand what the anchors are doing, keep them simple like below.
+waggle_sets:
+  default: # called by ;buff
+    << : *fin
+    << : *noum
+    << : *phk
+
+  ## Script Based Spells
+  prehunt_buffs:
+    << : *noum
+    << : *fin
+    << : *lgv
+    << : *trc
+  town-training:
+    << : *noum
+  sew:
+    << : *noum
+    << : *fin
+    << : *phk
+  pick:
+    << : *noum
+  smith:
+    << : *fin
+    << : *noum
+    << : *phk
+  trade:
+    << : *noum
+    << : *fin
+
+
+  ## Individual Spells Below
+  noum:
+    << : *noum
+  gaf:
+    << : *gaf
+  phk:
+    << : *phk
+  lgv:
+    << : *lgv
+  trc:
+    << : *trc
+  fin:
+    << : *fin
+
+training_spells:
+  Utility:
+    abbrev: NOU
+    use_auto_mana: true
+  Augmentation:
+    abbrev: FIN
+    use_auto_mana: true
+  Warding:
+    abbrev: Nonchalance
+    use_auto_mana: true
+
+
+
+cambrinth: cambrinth armband
+cambrinth_cap: 32
+stored_cambrinth: false
+use_harness_when_arcana_locked: true
+dedicated_camb_use: spell
+waggle_force_cambrinth: true
+buff_spells_force_cambrinth: false
+
+cambrinth_items:
+  - name: cambrinth armband
+    cap: 32
+    stored: false
+
+
+### Caravan Settings - Post Circle 10 ###
+### FIND A FEEDBAG - Bought from the trader shop in Crossing, or ask another trader ###
+trade_contract_container: contract case
+caravan_coins_on_hand: 12345
+yarn_quantity: 200
+lumber_quantity: 15
+caravan_training_skills:
+  Utility: 5
+  Augmentation: 5
+  Warding: 5
+  Performance: 120
+  Outdoorsmanship: 5
+  First Aid: 120
+  Appraisal: 60 # find a couple gem pouches,
+  Attunement: 100 # PERC MANAs while walking
+  Outfitting: 200 # need knitting needles and yarn_quantity
+
+### Lockpicking Settings ###
+picking_box_source: backpack
+harvest_traps: false
+gem_pouch_adjective: gem
+sell_loot_bundle: true
+sell_loot_pouch: false
+footwear: boots
+textbook: true
+textbook_type: textbook
+
+
+textsubs:
+  load:
+  - racial
+  block:
+  - custom
+  custom:
+  - original: Arlov
+    substitution: FrankyFrankSnake
+
+# Workoder Section
+# forging_belt:
+#   name: forger belt
+#   items:
+forging_tools:
+- ball-peen hammer
+- tongs
+- corrugated-hide bellows
+- curved shovel
+- stirring rod
+
+forging_belt:
+  name: forger's belt
+  items:
+  - ball-peen hammer
+  - tongs
+  - corrugated-hide bellows
+  - curved shovel
+  - stirring rod
+
+use_own_ingot_type: bronze
+deed_own_ingot: true
+
+engineering_belt:
+
+outfitting_belt:
+  name: outfitter's belt
+  items:
+    - knitting needles
+    - awl
+    - yardstick
+    - scissors
+    - sewing needles
+outfitting_tools: # Buy a set of knitting needles, tailoring book and outfitting logbook from the Outfitting Society
+- knitting needles
+- awl
+- yardstick
+- scissors
+- sewing needles
+
+alchemy_belt:
+enchanting_belt:
+offensive_spell_mana_threshold: 70
+training_spell_mana_threshold: 70
+buff_spell_mana_threshold: 70
+
+crafting_training_spells:
+  Utility:
+    abbrev: NOU
+    mana: 22
+  Augmentation:
+    abbrev: FIN
+    mana: 18
+  Warding:
+    abbrev: Nonchalance
+    mana: 15
+
+train_workorders:  # What disciplines will be used to train the crafting skills (Outfitting, Engineering, Forging, etc.)
+  - Tailoring
+  - Blacksmithing
+  #- Shaping
+work_order_disciplines:  # What disciplines will be used to train Trading
+  - Tailoring
+  - Blacksmithing
+  #- Shaping
+
+### Crafting Settings ###
+crafting_container: haversack
+craft_max_mindstate: 33
+
+workorder_min_items: 2
+workorder_max_items: 3
+# outfitting_room: 12225
+workorder_diff:
+  tailoring: hard
+  weaponsmithing: easy
+  blacksmithing: hard
+  carving: easy
+  remedy: easy
+
+workorder_recipes:
+  tailoring:
+    # $$Cloth Decorative Wear Design 
+    # - some cloth socks
+    # - a cloth ankleband
+    # - a cloth armband
+    # - some cloth ankle socks
+    # - a cloth belt
+    # - some cloth fingerless gloves
+    # - a cloth cape
+    # - some cloth robes
+    # - a cloth tunic
+    # - a cloth cloak
+    # - a cloth shirt
+    # - a sleeveless cloth shirt
+    # - a cloth sash
+    # - a cloth kilt
+    # - a cloth skirt
+    # - some cloth pants
+    # - a floppy cloth hat
+    # - a cloth head scarf
+    # - a cloth commoner's cloak
+    # - a cloth dunce hat
+    # - a cloth hat
+    # - some cloth field shoes
+    # - some cloth slippers
+    # - a cloth scarf
+    # - a cloth headband
+    # - some elbow-length gloves
+    # - some cloth knee socks
+
+    # $$Accessory Cloth Armor Design 
+    - quilted cloth mask
+    - quilted cloth aventail
+    - padded cloth mask
+    - padded cloth aventail
+    - quilted cloth gloves
+    - insulated cloth mask
+    - insulated cloth aventail
+    - padded cloth gloves
+    - insulated cloth gloves
+    # $$Extremity Cloth Armor Design
+    - quilted cloth pants
+    - padded cloth pants
+    - insulated cloth pants
+    - quilted cloth cap
+    - padded cloth cap
+    - insulated cloth cap
+    - quilted cloth hood
+    - padded cloth hood
+    - insulated cloth hood
+    - quilted cloth vambraces
+    - padded cloth vambraces
+    - insulated cloth vambraces
+    - quilted cloth sleeves
+    - padded cloth sleeves
+    - insulated cloth sleeves
+    # $$Torso Cloth Armor Design
+    # - quilted cloth tasset
+    # - padded cloth tasset
+    # - insulated cloth tasset
+    # - quilted cloth mantle
+    # - padded cloth mantle
+    # - insulated cloth mantle
+    # - quilted cloth vest
+    # - padded cloth vest
+    # - insulated cloth vest
+    # - quilted cloth tabard
+    # - padded cloth tabard
+    # - insulated cloth tabard
+
+
+#   blacksmithing:
+#     - curved metal shovel
+#     - square metal shovel
+#     - tappered metal shovel
+#     - sturdy metal shovel
+#     - wide metal shovel
+#     - metal diagonal-peen hammer
+#     - metal diagonal-peen mallet
+#     - metal cross-peen hammer
+#     - metal straight-peen hammer
+#     - metal straight-peen mallet
+#     - metal ball-peen hammer
+#     - metal ball-peen mallet
+#     - shallow metal cup
+#     - slender metal rod
+#     - tall metal mug
+#     - short metal mug
+#     - soft metal keyblank
+#     - metal horseshoe
+#     - metal scratcher
+# #    - metal barbells
+#     - large metal horseshoe
+#     - small metal flask
+#     - metal flask
+#     - metal razor
+#     - metal oil lantern
+#     - metal lockpick ring
+#     - large metal flask
+#     - metal clippers
+training_list:
+  - skill:
+    - Forging
+    - Trading
+    start: 10
+    scripts:
+      - workorders blacksmithing
+      - sell-loot
+  - skill:
+    - Outfitting
+    - Trading
+    start: 10
+    scripts:
+      - workorders tailoring
+      - sell-loot
+  - skill: Outdoorsmanship
+    start: 15
+    scripts:
+      - burgle start
+      - gosafe
+      - outdoorsmanship 100
+  - skill: Appraisal
+    start: 10
+    scripts:
+      - burgle start
+      - appraisal
+  - skill: Athletics
+    start: 10
+    scripts:
+      - burgle start
+      - athletics
+  # - skill: Utility
+  #   start: 2
+  #   scripts:
+  #     - buff gaf
+  #     - researcher utility
+  # - skill: Attunement
+  #   start: 2
+  #   scripts:
+  #     - buff gaf
+  #     - researcher attunement
+  # - skill:
+  #   - Warding
+  #   start: 2
+  #   scripts:
+  #     - buff gaf
+  #     - researcher warding
+  # - skill:
+  #   - Lunar Magic
+  #   - Arcana
+  #   start: 2
+  #   scripts:
+  #     - buff gaf
+  #     - researcher fundamental
+  # - skill: Augmentation
+  #   start: 2
+  #   scripts:
+  #     - buff gaf
+  #     - researcher augmentation
+
+
+burgle_settings:
+    lockpick_container: lockpick ring
+    room: 1879
+    entry_type: cycle                      # lockpick | rope | cycle
+    use_lockpick_ring: true
+    max_search_count: 2
+    loot: keep
+    safe_mode: true
+    loot_container: backpack
+    # room_blacklist:                           # array of rooms to ignore. Case sensitive.
+    #     - Kitchen
+    # item_whitelist:
+
+#train_with_burgle: true
+
+    # Mining settings
+# https://elanthipedia.play.net/Lich_script_repository#mining-buddy
+mines_to_mine:
+- wicked_burrow
+- stone_clan
+- waterfall
+mining_skip_populated: true
+mining_buddy_mine_every_room: false
+mining_buddy_vein_list:
+# common
+- Covellite
+- Lead
+- Silver
+- tin
+- copper
+# alchemy
+- Electrum
+- Kadepa
+- Muracite
+- Niello
+- Niniam
+- Orichalcum
+# forging
+- Aldamdin
+- Animite
+- Audrualm
+- Damite
+- Darkstone
+- Glaes
+- Haledroth
+- Haralun
+- Icesteel
+- Indurium
+- Kertig
+- Kiralan
+- Lumium
+- Platinum
+- Quelium
+- Silversteel
+- Telothian
+- Tyrium
+- Vardite
+- Yellow gold
+# engineering
+# common
+# - Obsidian
+# - Quartzite
+# rare
+- Anjisis
+- Belzune
+- Blackwater jet
+- Diamondique
+- Felstone
+- Fulginode
+- Senci
+- Xenomite
+mining_ignored_stone_sizes:
+- pebble
+mining_ignored_deed_sizes:
+- pebble
+mining_implement: shovel
+mine_use_packet: true
+mine_while_training: false

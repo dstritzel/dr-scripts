@@ -1,0 +1,203 @@
+---
+# https://elanthipedia.play.net/Ranger#Circle_Requirements
+
+# 4 Magics (only 3 are needed to circle): Augmentation, Arcana, Attunement, Utility
+# 5 Weapons (only 2 are needed to circle): Brawling, Bow, Heavy Thrown, Light Thrown, Polearms
+# 2 Armors: Light Armor, Shield Usage
+# 8 Survivals: Stealth, Outdoorsmanship, Athletics, Perception, Skinning, Evasion, Locksmithing, Scouting
+# 3 Lores (only 2 are needed to circle): Appraisal, Tactics, Scholarship
+
+# You do not need to train any more Magic to circle
+# However, you will probably end up training them all since they each have very useful abilities
+# The other Magic skills are: Targeted Magic, Debilitation, Warding
+
+# Hunting settings
+training_manager_hunting_priority: true
+training_manager_priority_skills:
+- Brawling
+- Bow
+- Twohanded Edged
+- Small Edged
+- Polearms
+- Tactics
+hunting_info:
+- :zone: goblins
+  stop_on:
+  - Brawling
+  - Bow
+  - Twohanded Edged
+  - Small Edged
+  - Polearms
+  - Tactics
+
+# Gear settings
+gear:
+# - :adjective: example
+#   :name: gear
+#   :is_leather: true
+#   :hinders_lockpicking: false
+#   :is_worn: true
+- :adjective: lightweight
+  :name: leathers
+  :is_leather: true
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: leather
+  :name: cowl
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: leather
+  :name: gloves
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: crocodile-skin
+  :name: buckler
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+# Brawling
+- :adjective: parry
+  :name: stick
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+- :adjective: brass
+  :name: knuckles
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :adjective: elbow
+  :name: wraps
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+# Weapons
+- :adjective: hand
+  :name: sickle
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: false
+- :adjective: steel
+  :name: claymore
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: false
+- :adjective: glaes
+  :name: halberd
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: false
+- :adjective: competition
+  :name: shortbow
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: false
+gear_sets:
+  standard:
+  - lightweight leathers
+  - leather cowl
+  - leather gloves
+  - crocodile-skin buckler
+  - parry stick
+  - brass knuckles
+  - elbow wraps
+
+offensive_spells:
+offensive_spells:
+  - skill: Targeted Magic
+    name: Eagle's Cry
+    abbrev: ec
+    mana: 1
+    cambrinth:
+    - 1
+    cast_only_to_train: true
+
+
+# Combat settings
+use_stealth_attacks: true
+buff_spells:
+  See the Wind:
+    abbrev: stw
+    recast: 1
+    mana: 1
+    cambrinth:
+    - 1
+training_abilities:
+  Tactics: 30
+  Stealth: 60
+  Hunt: 80
+  Perc: 120
+weapon_training:
+  Brawling: ''
+  Bow: competition shortbow
+  Twohanded Edged: steel claymore
+  Small Edged: hand sickle
+  Polearms: glaes halberd
+priority_weapons:
+  - Bow
+dance_skill: Polearms
+skinning:
+  skin: true
+  arrange_all: false
+  arrange_count: 0
+  tie_bundle: true
+restock:
+  arrow:
+    quantity: 50
+
+# Non-combat settings
+exp_timers:
+  Attunement: 130
+  Stealth: 300
+  Locksmithing: 600
+training_spells:
+  Utility:
+    abbrev: Compost
+  Augmentation:
+    abbrev: STW
+crossing_training:
+- Locksmithing
+- Scouting
+- Perception
+- Athletics
+- Outdoorsmanship
+- Appraisal
+- Scholarship
+- Augmentation
+- Utility
+safe_room: 851
+cambrinth: cambrinth ring
+cambrinth_cap: 5
+favor_goal: 10
+favor_god: Everild
+picking_box_source: bag
+stop_pick_on_mindlock: false
+use_lockpick_ring: true
+lockpick_type: ordinary
+
+
+athleticism: &ath
+  Athleticism:
+    recast: 1500
+    mana: 1
+    cambrinth:
+    - 1
+stw: &stw
+  See the Wind:
+    recast: 1500
+    abbrev: stw
+    mana: 1
+    cambrinth:
+    - 1
+
+
+waggle_sets:
+  outdoor:
+    << : *ath
+  stw:
+    << : *stw
+  default:
+    << : *ath
+    << : *stw
