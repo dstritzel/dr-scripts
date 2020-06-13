@@ -510,12 +510,15 @@ class LootProcess
     end
     bput("remove my #{@gem_pouch_adjective} pouch", 'You remove')
     if @full_pouch_container
-      bput("put my #{@gem_pouch_adjective} pouch in my #{@full_pouch_container}", 'You put')
+      case bput("put my #{@gem_pouch_adjective} pouch in my #{@full_pouch_container}", 'You put','too heavy to go in there')
+      when 'too heavy to go in there'
+        bput("stow my #{@gem_pouch_adjective} pouch", 'You put')
+      end
     else
       bput("stow my #{@gem_pouch_adjective} pouch", 'You put')
     end
     bput("get #{@gem_pouch_adjective} pouch from my #{@spare_gem_pouch_container}", 'You get a')
-    bput('wear my pouch', 'You attach')
+    bput("wear my #{@settings.gem_pouch_adjective} pouch", 'You attach')
     bput('stow gem', 'You pick up', 'You get', 'You need a free hand', 'You just can\'t', 'push you over the item limit', 'You stop as you realize the .* is not yours', 'Stow what', 'already in your inventory')
     if @tie_pouch
       bput('tie my pouch', 'You tie')
@@ -2815,11 +2818,13 @@ class AttackProcess
       end
     else
       if game_state.dual_load?
+        fput('load arrows')
         pause 0.5 until (load_return = bput('load arrows', 'You reach into', 'already loaded', 'in your hand', 'Such a feat would be impossible without the winds to guide', 'but are unable to draw upon its majesty', 'without steadier hands', 'Your .* makes the task more difficult')) != ''
         if ['but are unable to draw upon its majesty', 'without steadier hands', 'Such a feat would be impossible without the winds to guide'].include?(load_return)
           pause 0.5 until bput('load', 'You reach into', 'You carefully load', 'already loaded', 'in your hand') != ''
         end
       else
+        fput('load')
         pause 0.5 until bput('load', 'You reach into', 'You carefully load', 'already loaded', 'in your hand') != ''
       end
 
@@ -2859,8 +2864,8 @@ class AttackProcess
       game_state.loaded = true
       check_firing_time
     when 'Your repeating crossbow', 'Your assassin\'s crossbow', 'Your riot crossbow'
-      case bput('push my cross', 'A rapid series of clicks', 'You attempt to ready your repeating crossbow', 'You attempt to ready your assassin\'s crossbow', 'You attempt to ready your riot crossbow')
-      when 'A rapid series of clicks'
+      case bput('push my cross', 'A rapid series of clicks', 'You attempt to ready your repeating crossbow', 'You attempt to ready your assassin\'s crossbow', 'You attempt to ready your riot crossbow','You realize readying')
+      when 'A rapid series of clicks','You realize readying'
         aim(game_state)
       when 'You attempt to ready your repeating crossbow', 'You attempt to ready your assassin\'s crossbow', 'You attempt to ready your riot crossbow', "isn't loaded"
         game_state.loaded = false
