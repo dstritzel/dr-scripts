@@ -252,6 +252,7 @@ harvest_traps: false
 picking_pet_box_source: hip pouch
 picking_box_source: carryall
 picking_box_storage: leather bag
+fill_pouch_with_box: true
 lockpick_type: ordinary
 lockpick_dismantle: crush
 lockpick_buffs:
