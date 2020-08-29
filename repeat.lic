@@ -1,0 +1,14 @@
+=begin
+  Documentation: https://elanthipedia.play.net/Lich_script_repository#repeat
+
+=end
+
+loop {
+  for n in 1..9
+    if variable[n]
+      pause
+      waitrt?
+      put "#{variable[n]}"
+    end
+  end
+}

@@ -120,7 +120,7 @@ class Bescort
       ],
       [
         { name: 'segoltha', regex: /segoltha/i, description: 'The Segoltha south of the crossing' },
-        { name: 'mode', options: %w[north south], description: 'Where do you need to get to?' }
+        { name: 'mode', options: %w[north south west], description: 'Where do you need to get to?' }
       ],
       [
         { name: 'crocs', regex: /crocs/i, description: 'Blue belly crocodiles on NTR' },
@@ -219,7 +219,11 @@ class Bescort
       [
         { name: 'jolas', regex: /jolas/i, description: "Ride The Jolas between Hara'jaal and Mer'Kresh." },
         { name: 'mode', options: %w[harajaal merkresh], description: "harajaal or merkresh?  Can be started while aboard the Jolas." }
-      ]   
+      ],
+      [
+        { name: 'currach', regex: /currach/i, description: "Row a currach between Halasa Temple and Aesry Surlaenis'a." },
+        { name: 'mode', options: %w[halasa aesry], description: "halasa or aesry?" }
+      ]  
     ]
 
     args = parse_args(arg_definitions)
@@ -289,11 +293,46 @@ class Bescort
     elsif args.hara_polo
       hara_polo(args.mode)
     elsif args.jolas
-      jolas(args.mode)       
+      jolas(args.mode)
+    elsif args.currach
+      currach(args.mode)
     end
   end
 
   private
+
+  def currach(mode)
+    if (mode.include?('aesry') && [5555, 5557, 5558].include?(Room.current.id))
+      echo "You're already there silly!"
+      exit    
+    elsif (mode.include?('halasa') && [15863].include?(Room.current.id))
+      echo "You're already there silly!"
+      exit    
+    elsif mode == 'aesry'
+      row_direction = 'pier'
+    elsif mode == 'halasa'
+      row_direction = 'rock'
+    else
+      echo("Unrecognized argument: #{mode}")
+      exit
+    end  
+
+    if [5555, 5557, 5558, 15863].include?(Room.current.id)
+      move "go currach"
+      bput('get oars', 'You grab hold of the oars', 'But you already have a firm grip on the oars', 'What were you referring to',  "You can't do that right now")
+      bput('untie currach', 'You untie the', "But it's not tied to anything!", 'What were you referring to',  "You can't do that right now")
+    end
+
+    loop do
+      if bput("tie currach to #{row_direction}", "isn't close enough!", 'You pull at the oars', 'is already moored') == 'is already moored'
+        fix_standing
+        move "go #{row_direction}"
+        exit
+      else
+        bput("row #{row_direction}", 'You pull strongly', 'What were you referring to',  "You can't do that right now")
+      end
+    end 
+  end
 
   def jolas(mode)
     #Boat has multiple rooms: 15450, 15451, 15452, 15453, 15454
@@ -571,8 +610,58 @@ class Bescort
     end
     case mode
     when /oasis/
-      echo 'Not implemented'
-      exit
+    loop do
+      desert_enter
+      path = %w[s ne ne s s ne e]
+      path.each do |movement|
+        if DRRoom.room_objs.include?('shimmering oasis')
+          move 'go oasis'
+          exit
+        else
+          move(movement)
+        end
+      end
+      move 'go trail'
+      path = %w[ne n ne n ne n n ne n ne n]
+      path.each do |movement|
+        if DRRoom.room_objs.include?('shimmering oasis')
+          move 'go oasis'
+          exit
+        else
+          move(movement)
+        end
+      end
+      move 'go path'
+      path = %w[sw e s s ne s se n ne ne ne]
+      path.each do |movement|
+        if DRRoom.room_objs.include?('shimmering oasis')
+          move 'go oasis'
+          exit
+        else
+          move(movement)
+        end
+      end
+      move 'go trail'
+      path = %w[n sw ne s sw n up n s s n n down n s s sw s]
+      path.each do |movement|
+        if DRRoom.room_objs.include?('shimmering oasis')
+          move 'go oasis'
+          exit
+        else
+          move(movement)
+        end
+      end
+      path = %w[n ne up e s ne nw ne e nw]
+      path.each do |movement|
+        if DRRoom.room_objs.include?('shimmering oasis')
+          move 'go oasis'
+          exit
+        else
+          move(movement)
+        end
+      end
+      move 'go road'
+      end
     when /juvenile/
       desert_enter
       find_room_maze
@@ -590,6 +679,12 @@ class Bescort
       find_room_maze
       exit
     when /exit/
+      if XMLData.room_title.include?('Sanctuary') # Oasis
+        release_invisibility
+        bput('ask Sand Elf about desert', 'The Sand Elf laughs and glances at you playfully')
+        fix_standing
+        desert(mode)
+      end
       if XMLData.room_title.include?('Sand Valley') # Adult Area
         move_direction?(priority_directions) until DRRoom.room_objs.include?('faint trail leading to some nearby dunes')
         move 'go trail'
@@ -1058,12 +1153,16 @@ class Bescort
   def segoltha(mode)
     EquipmentManager.new.empty_hands
     have_changed_gear = EquipmentManager.new.wear_equipment_set?('swimming')
+    move_count = 0
     if mode =~ /^n/i
       dir_of_travel = 'north'
       start_room = 19_373
     elsif mode =~ /^s/i
       dir_of_travel = 'south'
       start_room = 19_457
+    elsif mode =~ /^w/i
+      dir_of_travel = 'south'
+      start_room = 15_888
     else
       echo('Must specify north or south for swimming the segoltha')
       exit
@@ -1076,8 +1175,12 @@ class Bescort
 
     loop do
       waitrt?
-      if XMLData.room_exits.length == 2
+      if XMLData.room_exits.length == 2 || XMLData.room_exits.length == 1
         move 'west'
+        move_count -= 1
+      elsif dir_of_travel == 'north' && move_count == 16 && UserVars.segoltha_shortcut == 'true'
+        move 'east'
+        break if Room.current.id == 15888
       elsif XMLData.room_exits.include?(dir_of_travel)
         move dir_of_travel
       elsif XMLData.room_exits.length == 0
@@ -1085,10 +1188,12 @@ class Bescort
         break if Room.current.id == 19457 && dir_of_travel == 'north'
         if !(move dir_of_travel)
           move 'west'
+          move_count -= 1
         end
       else
         break
       end
+      move_count += 1
     end
     EquipmentManager.new.wear_equipment_set?('standard') if have_changed_gear
   end
@@ -1272,7 +1377,8 @@ class Bescort
       6867 => 'Auilusi',
       8302 => 'Vellano',
       3777 => "Dor'na'torna",
-      287 => 'Tabelrem'
+      287 => 'Tabelrem',
+      6991 => 'Besoge'
     }
 
     mode_to_shard = {
