@@ -1,5 +1,5 @@
 @ECHO OFF
-Set _Destination=E:\dragonrealms\lich\scripts
+Set _Destination=D:\dragonrealms\lich\scripts
 
 FOR /f %%a IN (
  'dir /b *.lic'
