@@ -8,7 +8,6 @@ weapon_training:
   Large Edged: broadsword
   Light Thrown: bola
   
-  
 training_manager_priority_skills:
 - Large Edged
 - Light Thrown
