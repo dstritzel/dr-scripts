@@ -19,6 +19,7 @@ summoned_weapons:
 - name: Light Thrown
 - name: Large Edged
 
+
 dance_skill: Large Edged
 priority_defense: Shield Usage
 stance_override: 40 40 100
