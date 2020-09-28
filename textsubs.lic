@@ -47,6 +47,19 @@ if get_settings.integrate_shit_list_with_textsubs && File.file?("#{checkname}_sh
   end
 end
 
+# Necromancer Outrage
+if DRStats.necromancer?
+  TextSubs.add("The citizens of (Zoluren|Ilithi|Qi'Reshalia|Therengia|Forfedhar) are growing suspicious of you.", "The citizens of \1 are growing suspicious of you. (1/4)")
+  TextSubs.add("it is widely believed that you are some kind of sorcerer.", "it is widely believed that you are some kind of sorcerer. (2/4)")
+  TextSubs.add("is criminal and the government actively seeks to arrest you.", "is criminal and the government actively seeks to arrest you. (3/4)")
+  TextSubs.add("You are regarded as a monster by the good folk of (Zoluren|Ilithi|Qi'Reshalia|Therengia|Forfedhar)", "You are regarded as a monster by the good folk of \1. (4/4)")
+  TextSubs.add("You feel as if many eyes are judging you and still find you... lacking.", "You feel as if many eyes are judging you and still find you... lacking. (0/4)")
+  TextSubs.add("As though in response, you are struck by a feeling of insecurity.", "As though in response, you are struck by a feeling of insecurity. (1/4)")
+  TextSubs.add("As though in response, you have a brief, sharp pain in your limbs.", "As though in response, you have a brief, sharp pain in your limbs. (2/4)")
+  TextSubs.add("As though in response, you feel a deep pain in your chest.", "As though in response, you feel a deep pain in your chest. (3/4)")
+  TextSubs.add("The experience leaves you feeling naked for all to see.", "The experience leaves you feeling naked for all to see. (4/4)")
+end
+
 # Necromancer Butchery
 if DRStats.necromancer?
   TextSubs.add('manage to extract a perfect', 'manage to extract a perfect (10/10)')
@@ -1508,5 +1521,34 @@ TextSubs.add('kirm mysanda', 'kirm mysanda (vitality)')
 TextSubs.add('lyba mysanda', 'lyba mysanda (spirit)')
 TextSubs.add('mishar mysanda', 'mishar mysanda (concentration)')
 TextSubs.add('morlam mysanda', 'morlam mysanda (fatigue)')
+
+#sigil hunting mini game
+TextSubs.add(':\s+--------------------', ':  0/20')
+TextSubs.add(':\s+\*-------------------', ':  1/20')
+TextSubs.add(':\s+\*\*------------------', ':  2/20')
+TextSubs.add(':\s+\*\*\*-----------------', ':  3/20')
+TextSubs.add(':\s+\*\*\*\*----------------', ':  4/20')
+TextSubs.add(':\s+\*\*\*\*\*---------------', ':  5/20')
+TextSubs.add(':\s+\*\*\*\*\*\*--------------', ':  6/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*-------------', ':  7/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*------------', ':  8/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*-----------', ':  9/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*\*----------', ':  10/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*\*\*---------', ':  11/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*\*\*\*--------', ':  12/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*\*\*\*\*-------', ':  13/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*\*\*\*\*\*------', ':  14/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*-----', ':  15/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*----', ':  16/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*---', ':  17/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*--', ':  18/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*-', ':  19/20')
+TextSubs.add(':\s+\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*', ':  20/20')
+
+TextSubs.add('\.\.\.a trivial', '...a trivial (1/5)')
+TextSubs.add('\.\.\.a straightforward', '...a straightforward (2/5)')
+TextSubs.add('\.\.\.a formidable', '...a formidable (3/5)')
+TextSubs.add('\.\.\.a challenging', '...a challenging (4/5)')
+TextSubs.add('\.\.\.a difficult', '...a difficult (5/5)')
 
 clear until script.gets.nil?
